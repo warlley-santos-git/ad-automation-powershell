@@ -1,0 +1,6 @@
+Nome,Sobrenome,Login,Departamento,Cargo,OU,Grupos
+Ana,Ribeiro,ana.ribeiro,Financeiro,Analista Financeiro,"OU=Financeiro,OU=Usuarios,DC=lab,DC=local",GG_Financeiro;GG_VPN
+Bruno,Carvalho,bruno.carvalho,TI,Analista de Suporte,"OU=TI,OU=Usuarios,DC=lab,DC=local",GG_TI;GG_VPN
+Carla,Mendes,carla.mendes,RH,Assistente de RH,"OU=RH,OU=Usuarios,DC=lab,DC=local",GG_RH
+Diego,Almeida,diego.almeida,Operacoes,Supervisor,"OU=Operacoes,OU=Usuarios,DC=lab,DC=local",GG_Operacoes
+Elaine,Souza,elaine.souza,Operacoes,Atendente,"OU=Operacoes,OU=Usuarios,DC=lab,DC=local",GG_Operacoes
