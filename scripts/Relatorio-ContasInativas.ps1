@@ -45,7 +45,7 @@ param(
 
 Import-Module ActiveDirectory -ErrorAction Stop
 
-if (-not (Test-Path $PastaSaida)) { New-Item -ItemType Directory -Path $PastaSaida | Out-Null }
+if (-not (Test-Path $PastaSaida)) { New-Item -ItemType Directory -Path $PastaSaida -WhatIf:$false | Out-Null }
 
 $dataLimite = (Get-Date).AddDays(-$Dias)
 $props = 'LastLogonDate','WhenCreated','Department','Title','Description'
@@ -73,7 +73,7 @@ $relatorio = $inativos | Sort-Object LastLogonDate | Select-Object `
     DistinguishedName
 
 $arquivo = Join-Path $PastaSaida ("contas-inativas_{0}dias_{1:yyyyMMdd}.csv" -f $Dias, (Get-Date))
-$relatorio | Export-Csv -Path $arquivo -NoTypeInformation -Encoding UTF8 -Delimiter ';'
+$relatorio | Export-Csv -Path $arquivo -NoTypeInformation -Encoding UTF8 -WhatIf:$false -Delimiter ';'
 
 Write-Host ("{0} contas sem login há mais de {1} dias." -f @($relatorio).Count, $Dias)
 Write-Host "Relatório: $arquivo"

@@ -42,7 +42,7 @@ param(
 
 Import-Module ActiveDirectory -ErrorAction Stop
 
-if (-not (Test-Path $PastaLog)) { New-Item -ItemType Directory -Path $PastaLog | Out-Null }
+if (-not (Test-Path $PastaLog)) { New-Item -ItemType Directory -Path $PastaLog -WhatIf:$false | Out-Null }
 $arquivoLog = Join-Path $PastaLog ("criacao-usuarios_{0:yyyyMMdd_HHmmss}.csv" -f (Get-Date))
 
 function New-SenhaTemporaria {
@@ -131,6 +131,6 @@ foreach ($u in $usuarios) {
     })
 }
 
-$resultados | Export-Csv -Path $arquivoLog -NoTypeInformation -Encoding UTF8
+$resultados | Export-Csv -Path $arquivoLog -NoTypeInformation -Encoding UTF8 -WhatIf:$false
 $resultados | Group-Object Status | Select-Object Name, Count | Format-Table -AutoSize
 Write-Host "Log salvo em: $arquivoLog"
