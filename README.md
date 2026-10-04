@@ -53,6 +53,34 @@ Cada conta recebe uma senha temporária aleatória, com troca obrigatória no pr
 - Nenhuma senha gravada em arquivo
 - Ajuda embutida: `Get-Help .\scripts\Novo-UsuariosEmMassa.ps1 -Full`
 
+## Evidências (testado no laboratório)
+
+**1. Simulação com `-WhatIf`: nada é criado, só mostra o que seria feito**
+
+![Execução com -WhatIf, 5 usuários simulados](docs/prints/01-simulacao-whatif.png)
+
+**2. Execução real: 5 usuários criados, cada um com senha temporária aleatória**
+
+![5 usuários criados, senhas ocultadas](docs/prints/02-usuarios-criados.png)
+
+**3. Usuários no AD, na OU correta e habilitados**
+
+![Get-ADUser listando os 5 usuários](docs/prints/03-usuarios-no-ad.png)
+
+**4. Primeiro login em uma estação do domínio: troca de senha obrigatória**
+
+![Aviso de que a senha deve ser trocada antes do login](docs/prints/04-troca-de-senha-obrigatoria.png)
+
+![Senha alterada com sucesso](docs/prints/05-senha-alterada.png)
+
+**5. Login concluído com o usuário criado pelo script**
+
+![Área de trabalho logada como Ana Ribeiro](docs/prints/06-login-com-usuario-criado.png)
+
+**6. Rodar de novo não duplica nem sobrescreve: os 5 são ignorados**
+
+![Segunda execução com 5 usuários ignorados](docs/prints/07-reexecucao-ignorados.png)
+
 ## Ambiente de teste
 
 Os scripts foram pensados para o meu laboratório com AD no Hyper-V: [lab-microsoft-hyperv](https://github.com/warlley-santos-git/lab-microsoft-hyperv).
