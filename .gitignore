@@ -1,3 +1,7 @@
 __pycache__/
 logs/
 relatorios/
+
+# Senhas e segredos locais
+.env
+*.env
